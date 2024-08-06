@@ -13,5 +13,5 @@ export async function POST(req){
       });
     
       console.log(completion.choices[0].message.content);
-    return NextResponse.json({message: 'Hello from the server!'})
+    return NextResponse.json({message: 'Hello from the server!'}) // Return a JSON response
 }
