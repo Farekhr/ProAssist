@@ -225,18 +225,19 @@ export default function Home() {
 
       <Box
         sx={{
+          flex: 1,
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          flexGrow: 1,
-          mt: { xs: 8, sm: 10 }, // To account for the fixed AppBar height
+          paddingTop: { xs: '70px', sm: '80px' }, // Ensure the chat box doesn't overlap with the AppBar
         }}
       >
         <Paper
           elevation={6}
           sx={{
             width: { xs: '90%', sm: '600px' },
-            height: { xs: '90%', sm: '700px' },
+            height: { xs: '70%', sm: '700px' }, // Adjust the height as needed
+            maxHeight: '80vh', // Adjust the maximum height for phone screens
             background: 'rgba(255, 255, 255, 0.9)',
             borderRadius: 3,
             padding: 3,
@@ -254,8 +255,13 @@ export default function Home() {
             direction="column"
             spacing={2}
             flexGrow={1}
-            overflow="auto"
-            sx={{ maxHeight: '100%', padding: 2, background: '#f9f9f9', borderRadius: 3 }}
+            sx={{ 
+              overflowY: 'auto', // Enable vertical scrolling
+              maxHeight: 'calc(100% - 80px)', // Adjust height to leave space for the input area
+              padding: 2, 
+              background: '#f9f9f9', 
+              borderRadius: 3 
+            }}
           >
             {messages.map((message, index) => (
               <Box
