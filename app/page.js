@@ -16,7 +16,7 @@ export default function Home() {
     setMessages((messages)=>[
       ...messages,
       {role:"user", content: message},
-      {role: "assistant", CONTENT: ''}, 
+      {role: "assistant", content: ''}, 
     ])
     const response = fetch('/api/chat', {
       method:"POST", 
@@ -35,15 +35,12 @@ export default function Home() {
         }
         const text = decoder.decode(value || new Int8Array(), {stream:true})
         setMessages((messages)=>{
-          let lastMessage = message[messages.length -1]
+          let lastMessage = messages[messages.length -1]
           let otherMessages = messages.slice(0, messages.length -1)
-          //console.log()
+
           return [
             ...otherMessages, 
-            {
-              ...lastMessage,
-              content: lastMessage.content + text
-            },
+            { ...lastMessage, content: lastMessage.content + text },
           ]
         })
         return reader.read().then(processText)
