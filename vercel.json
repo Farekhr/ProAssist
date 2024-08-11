@@ -1,0 +1,8 @@
+{
+    "functions": {
+      "api/chat/route.js": {
+        "maxDuration": 70
+      }
+    }
+  }
+  
